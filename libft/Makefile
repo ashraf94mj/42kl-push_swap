@@ -10,7 +10,8 @@ SRCS	=	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c 	\
 
 SRCS_B	=		ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c			\
 				ft_lstlast.c	ft_lstadd_back.c	ft_lstdelone.c			\
-				ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
+				ft_lstclear.c	
+# ft_lstiter.c		ft_lstmap.c
 
 OBJS	=	$(SRCS:.c=.o)
 OBJS_B	=	$(SRCS_B:.c=.o)
@@ -26,22 +27,22 @@ RM		=	rm -f
 all		:	$(NAME)
 
 $(NAME)	:	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
-			ranlib $(NAME)
+			@ar rcs $(NAME) $(OBJS)
+			@ranlib $(NAME)
 
 %.o 	:	%.c
-			$(CC) $(CFLAGS) -c $< -o $@  
+			@$(CC) $(CFLAGS) -c $< -o $@  
 
 clean	:
-			$(RM) $(OBJS) $(OBJS_B)
+			@$(RM) $(OBJS) $(OBJS_B)
 
 fclean	:	clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re		:	fclean all
 
 bonus	:	$(OBJS_B)
-			ar rcs $(NAME) $(OBJS_B)
-			ranlib $(NAME)
+			@ar rcs $(NAME) $(OBJS_B)
+			@ranlib $(NAME)
 
 .PHONY	:	all clean fclean re bonus

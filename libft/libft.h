@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 03:46:18 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/06/24 02:46:32 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:46:28 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_strncmp(const char *str1, const char *str2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	*ft_calloc(size_t nelem, size_t elsize);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -63,9 +63,9 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(int));
-void	ft_lstclear(t_list **lst, void (*del)(int));
-void	ft_lstiter(t_list *lst, void (*f)(int));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(int), void (*del)(int));
+void	ft_lstdelone(t_list *lst);
+void	ft_lstclear(t_list **lst);
+// void	ft_lstiter(t_list *lst, void (*f)(int));
+// t_list	*ft_lstmap(t_list *lst, void *(*f)(int));
 
 #endif

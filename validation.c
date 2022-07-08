@@ -6,19 +6,20 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:58:02 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/06/30 18:03:25 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:53:34 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Errors checking for: some arguments aren’t integers, 
-						some arguments are bigger than an integer and/or
-						there are duplicates */
-
 static int	is_int(const char *str);
 static int	is_dup(int *arr, int size);
 
+/* Errors checking for: some arguments aren’t integers, 
+						some arguments are bigger than an integer and/or
+						there are duplicates
+						return 1 if invalid input
+						and return 0 if input arguments valid*/
 int	check_input(t_data *data, char **str, int size)
 {
 	int	i;

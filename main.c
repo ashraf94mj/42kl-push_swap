@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 22:47:26 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/06/30 18:58:37 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/08 02:41:58 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	free_data(t_data *data)
 void	error(t_data *data)
 {
 	free_data(data);
-	ft_putendl_fd("error", 2);
+	ft_putendl_fd("Error", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -93,41 +93,12 @@ int	main(int argc, char **argv)
 	{
 		return (0);
 	}
-
 	init_data(&data);
 	if (check_input(&data, ++argv, argc - 1))
 		error(&data);
 	data.stacka = create_stack(&data, argv);
-	check_stacks
-	push_swap(&data);
-
-
-
-	print_stack(&data);
-	
-
-	// pb(&data, 1);
-	// pb(&data, 1);
-	// pb(&data, 1);
-	// pb(&data, 1);
-	// print_stack(&data);
-
-
-	// rra(&data, 1);
-	// print_stack(&data);
-	// rra(&data, 1);
-	// print_stack(&data);
-	// rra(&data, 1);
-	// print_stack(&data);
-	// rrb(&data, 1);
-	// print_stack(&data);
-	// rrr(&data, 1);
-
-	
-	printf("%d\n", find_biggest(data.stacka));
-	printf("%d\n", find_smallest(data.stacka));
-	
-	check_stacks(&data);
+	if (check_stacks(data.stacka) == 0)
+		push_swap(&data);
 	free_data(&data);
 
 	return (0);

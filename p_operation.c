@@ -6,14 +6,11 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 12:20:07 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/06/29 14:26:17 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/02 12:35:59 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	pa(t_data *data, int display)
-// void	pb(t_data *data, int display)
 
 /*	pa (push a): Take the first element at the top of b and put it at the top of a.
 Do nothing if b is empty	*/

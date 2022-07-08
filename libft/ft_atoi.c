@@ -6,22 +6,13 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 03:41:30 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/05/30 20:02:44 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:33:12 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check_int(long number)
-{
-	if (number > 2147483647)
-		return (-1);
-	if (number < -2147483648)
-		return (0);
-	return (1);
-}
-
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	unsigned int	i;
 	long			sign;
@@ -41,9 +32,7 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + (sign *(str[i] - '0'));
-		if (check_int(nb) < 1)
-			return (check_int(nb));
 		i++;
 	}
-	return ((int)nb);
+	return (nb);
 }
