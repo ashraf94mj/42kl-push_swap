@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:58:10 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/07/08 11:00:01 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/08 17:25:59 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,15 @@ int	find_index(t_list *lst, int min, int max)
 void	push_b_big(t_data *data, int index)
 {
 	if (index > ft_lstsize(data->stacka) / 2)
-		rra(data, 1);
+	{
+		while (index--)
+			rra(data, 1);
+	}
 	else
-		ra(data, 1);
+	{
+		while (index--)
+			ra(data, 1);
+	}
 }
 
 void	push_a_big(t_data *data, int index)
@@ -76,7 +82,6 @@ void	push_a_big(t_data *data, int index)
 		rb(data, 1);
 }
 
-/* for sorting big size */
 void	push_swap_big(t_data *data, int section)
 {
 	int	pivot;
@@ -86,33 +91,62 @@ void	push_swap_big(t_data *data, int section)
 	transform_list(data);
 	start = 0;
 	pivot = ft_lstsize(data->stacka) / section;
-	end = start + pivot;
-	// print_stack(data); //
-	while (ft_lstsize(data->stacka) != 0)
+	end = pivot;
+	while (data->stacka != NULL)
 	{
 		while (find_index(data->stacka, start, end) != ft_lstsize(data->stacka))
 		{
 			push_b_big(data, find_index(data->stacka, start, end));
-			if (find_index(data->stacka, start, end) == 0)
-				pb(data, 1);
+			
+			// if (find_index(data->stacka, start, end) == 0)
+			pb(data, 1);
 		}
 		start = end;
 		end = end + pivot;
 	}
-	end = ft_lstsize(data->stackb);
-	start =ft_lstsize(data->stackb) - 1;
-	while (ft_lstsize(data->stackb) != 0)
+	while (data->stackb != NULL)
 	{
-		while (find_index(data->stackb, start, end) != ft_lstsize(data->stackb))
-		{
-			push_a_big(data, find_index(data->stackb, start, end));
-			if (find_index(data->stackb, start, end) == 0)
-				pa(data, 1);
-		}
-		end--;
-		start--;
+		push_a_big(data, find_biggest(data->stackb));
+		if (find_biggest(data->stackb) == 0)
+			pa(data, 1);
 	}
-
 }
+
+/* for sorting big size */
+// void	push_swap_big(t_data *data, int section)
+// {
+// 	int	pivot;
+// 	int	start;
+// 	int	end;
+
+// 	transform_list(data);
+// 	start = 0;
+// 	pivot = ft_lstsize(data->stacka) / section;
+// 	end = start + pivot;
+// 	while (data->stacka != NULL)
+// 	{
+// 		while (find_index(data->stacka, start, end) != ft_lstsize(data->stacka))
+// 		{
+// 			push_b_big(data, find_index(data->stacka, start, end));
+// 			if (find_index(data->stacka, start, end) == 0)
+// 				pb(data, 1);
+// 		}
+// 		start = end;
+// 		end = end + pivot;
+// 	}
+// 	end = ft_lstsize(data->stackb);
+// 	start = end - 1;
+// 	while (data->stackb != NULL)
+// 	{
+// 		while (find_index(data->stackb, start, end) != ft_lstsize(data->stackb))
+// 		{
+// 			push_a_big(data, find_index(data->stackb, start, end));
+// 			if (find_index(data->stackb, start, end) == 0)
+// 				pa(data, 1);
+// 		}
+// 		end--;
+// 		start--;
+// 	}
+// }
 
 
