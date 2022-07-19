@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 22:47:26 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/07/08 02:41:58 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:58:40 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,19 @@ void	print_stack(t_data *data)
 	}
 	printf("---------------\n");
 }
+/////////////////
 
 void	init_data(t_data *data)
 {
 	data->stacka = NULL;
 	data->stackb = NULL;
-	data->array = NULL;
+	data->track = NULL;
+	data->max_len = 0;
+	data->top_a = 0;
+	data->counter_a = 0;
+	data->counter_b = 0;
+	data->median_a = 0;
+	data->median_b = 0;
 	return ;
 }
 
@@ -57,11 +64,8 @@ void	free_data(t_data *data)
 		ft_lstclear(&data->stacka);
 	if (data->stackb)
 		ft_lstclear(&data->stackb);
-	if (data->array)
-	{
-		free(data->array);
-		data->array = NULL;
-	}
+	if (data->track)
+		ft_lstclear(&data->track);
 }
 
 void	error(t_data *data)
@@ -69,20 +73,6 @@ void	error(t_data *data)
 	free_data(data);
 	ft_putendl_fd("Error", 2);
 	exit(EXIT_FAILURE);
-}
-
-t_list	*create_stack(t_data *data, char **str)
-{
-	t_list	*first;
-	t_list	*new;
-
-	first = ft_lstnew(ft_atoi(*str++));
-	while (*str)
-	{
-		new = ft_lstnew((int)ft_atoi(*str++));
-		ft_lstadd_back(&first, new);
-	}
-	return (first);
 }
 
 int	main(int argc, char **argv)
@@ -94,14 +84,10 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	init_data(&data);
-	if (check_input(&data, ++argv, argc - 1))
+	if (create_stack(&data, ++argv) == 1)
 		error(&data);
-	data.stacka = create_stack(&data, argv);
-	if (check_stacks(data.stacka) == 0)
+	if (check_stack(data.stacka) == 0)
 		push_swap(&data);
 	free_data(&data);
-
 	return (0);
 }
-
-

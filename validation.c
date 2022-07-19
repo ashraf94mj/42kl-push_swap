@@ -6,39 +6,48 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:58:02 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/07/06 16:53:34 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:57:50 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	is_int(const char *str);
-static int	is_dup(int *arr, int size);
+static void	ft_free_temp(char **str);
+static int	is_dup(t_data *data);
+
 
 /* Errors checking for: some arguments aren’t integers, 
 						some arguments are bigger than an integer and/or
 						there are duplicates
 						return 1 if invalid input
-						and return 0 if input arguments valid*/
-int	check_input(t_data *data, char **str, int size)
+						and return 0 if input arguments valid
+	and at same time creating the stack A*/
+int	create_stack(t_data *data, char **str)
 {
-	int	i;
+	char	**temp;
+	int		i;
+	int		output;
 
-	i = 0;
-	data->array = malloc(sizeof(int) * size);
-	if (!data->array)
-		return (1);
+	output = 0;
 	while (*str)
 	{
-		if (is_int(*str))
-			return (1);
-		if (ft_atoi(*str) < INT_MIN || ft_atoi(*str) > INT_MAX)
-			return (1);
-		data->array[i++] = ft_atoi(*str++);
+		temp = ft_split(*str++, ' ');
+		i = 0;
+		while (temp[i])
+		{
+			if (is_int(temp[i]))
+				output = 1;
+			if (ft_atol(temp[i]) < INT_MIN || ft_atol(temp[i]) > INT_MAX)
+				output = 1;
+			ft_lstadd_back(&data->stacka, ft_lstnew((int)ft_atol(temp[i])));
+			i++;
+		}
+		ft_free_temp(temp);
 	}
-	if (is_dup(data->array, size))
-		return (1);
-	return (0);
+	if (is_dup(data) == 1)
+		output = 1;
+	return (output);
 }
 
 static int	is_int(const char *str)
@@ -59,22 +68,41 @@ static int	is_int(const char *str)
 	return (0);
 }
 
-static int	is_dup(int *arr, int size)
+static void	ft_free_temp(char **str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < size - 1)
+	if (str)
 	{
-		j = i + 1;
-		while (j < size)
+		while (str[i])
 		{
-			if (arr[i] == arr[j])
-				return (1);
-			j++;
+			free(str[i]);
+			i++;
 		}
-		i++;
+		free(str[i]);
+		free(str);
+	}
+}
+
+static int	is_dup(t_data *data)
+{
+	t_list	*first;
+	t_list	*second;
+	int		number;
+
+	first = data->stacka;
+	while (first)
+	{
+		number = first->content;
+		second = first->next;
+		while (second)
+		{
+			if (number == second->content)
+				return (1);
+			second = second->next;
+		}
+		first = first->next;
 	}
 	return (0);
 }
