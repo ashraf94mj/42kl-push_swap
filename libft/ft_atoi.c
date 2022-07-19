@@ -6,13 +6,13 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 03:41:30 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/06/28 14:33:12 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:26:58 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
 	unsigned int	i;
 	long			sign;
