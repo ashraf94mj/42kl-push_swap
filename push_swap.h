@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 14:10:54 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/07/20 12:03:32 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/20 12:33:02 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ typedef struct s_data
 	int			top_a;
 	int			median_a;
 	int			median_b;
-
 }				t_data;
 
 /*	push_swap.c	*/
+
 void	push_swap(t_data *data);
 
 /*	push_swap_big.c	*/
+
 void	recursion_sort(t_data *data, t_list *list);
 
 /*	utils_big.c	*/
