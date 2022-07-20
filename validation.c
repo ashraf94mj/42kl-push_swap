@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:58:02 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/07/19 15:57:50 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:19:29 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	is_int(const char *str);
 static void	ft_free_temp(char **str);
 static int	is_dup(t_data *data);
-
 
 /* Errors checking for: some arguments aren’t integers, 
 						some arguments are bigger than an integer and/or

@@ -6,7 +6,7 @@
 /*   By: mmohamma <mmohamma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:14:48 by mmohamma          #+#    #+#             */
-/*   Updated: 2022/07/19 17:10:37 by mmohamma         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:22:10 by mmohamma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,7 @@ void	transform_list(t_data *data)
 	t_list	*temp;
 
 	data->stackb = data->stacka;
-	// ft_putstr_fd("===\n", 1);
 	data->stacka = NULL;
-	// ft_putstr_fd("+++\n", 1);
 	first = data->stackb;
 	hold = first;
 	while (hold)
@@ -106,7 +104,6 @@ void	transform_list(t_data *data)
 			temp = temp->next;
 		}
 		ft_lstadd_back(&data->stacka, ft_lstnew(count));
-		// print_stack(data);
 		hold = hold->next;
 	}
 	ft_lstclear(&data->stackb);
